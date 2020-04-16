@@ -1,0 +1,65 @@
+<section class="content">
+  <div class="row">
+    <!-- Form controls -->
+    <div class="col-sm-12">
+      <div class="panel panel-bd lobidrag">
+        <div class="panel-heading">
+          <div class="btn-group">
+            <a class="btn btn-primary" href="">
+              <i class="fa fa-list"></i>  Patient List </a>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <form #f="ngForm" (ngSubmit)="savePatient(f.value)" class="col-sm-6" action="" enctype="multipart/form-data" method="post">
+
+            <div class="form-group">
+              <label>Patient Name</label>
+              <input ngModel type="text" class="form-control" name="patient_name" placeholder="Enter Patient Name" required>
+            </div>
+            <div class="form-group">
+              <label>Patient F/Name</label>
+              <input ngModel type="text" class="form-control" name="patient_fname" placeholder="Enter Patient Father Name">
+            </div>
+            <div class="form-group">
+              <label>Mobile</label>
+              <input  ngModel type="number" class="form-control" name="phone_number" placeholder="Enter Mobile" >
+            </div>
+            <div class="form-group">
+              <label>Address</label>
+              <input  ngModel type="text" class="form-control" name="address" placeholder="Enter Address">
+            </div>
+
+
+            <div class="form-group">
+              <label>Sex</label><br>
+              <label class="radio-inline"><input ngModel name="gender" value="male" checked="checked" type="radio">Male</label>
+              <label class="radio-inline"><input ngModel name="gender" value="female" type="radio">Female</label>
+
+            </div>
+            <div class="form-group">
+              <label>OPD</label><br>
+              <label class="radio-inline"><input ngModel name="OPD" value="yes" checked="checked" type="radio">Yes</label>
+              <label class="radio-inline"><input ngModel name="OPD" value="no" type="radio">No</label>
+
+            </div>
+
+            <div class="form-group">
+              <label>Registration Date</label>
+              <input ngModel type="date" class="form-control" name="date" required>
+            </div>
+
+            <div class="form-group">
+              <label>Remark</label>
+              <textarea ngModel class="form-control" rows="5" name="remark" ></textarea>
+            </div>
+            <div class="reset-button">
+              <button  class="btn btn-info w-md m-b-5">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
