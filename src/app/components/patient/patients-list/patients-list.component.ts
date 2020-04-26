@@ -12,8 +12,10 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 @Injectable()
 export class PatientsListComponent implements OnInit {
   patients: Observable<[]>;
-  filterData: [];
+  filterData: Observable<[]>;
   closeResult = '';
+  modalContent:undefined;
+
 
   constructor(@Inject(forwardRef(() => NgbModal)) private modalService: NgbModal, private patientService: PatientServicesService) {
   }
@@ -25,12 +27,14 @@ export class PatientsListComponent implements OnInit {
       this.filterData = response;
     });
   }
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  open(modal, patient) {
+    this.modalContent = patient;
+    this.modalService.open(modal, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
   }
 
   private getDismissReason(reason: any): string {
@@ -42,6 +46,5 @@ export class PatientsListComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
-
 
 }
